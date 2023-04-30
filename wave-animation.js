@@ -22,25 +22,25 @@ function updateWave() {
   document.documentElement.style.setProperty('--wave-roop-length', `${waveParams.waveWidth * -2}px`);
   
   // Set new viewBox and dimension values for all waveSVGs
-const waveSvgs = document.querySelectorAll('.wave-svg');
-waveSvgs.forEach(svg => {
-  const waveHeight = svg.dataset.waveheight;
-  const waveColor = svg.dataset.wavecolor;
-  const wavePath = svg.querySelector('.wave-path');
-  waveParams.waveHeight = waveHeight;
-  waveParams.waveColor = waveColor;
-  svg.setAttribute('viewBox', `0 0 ${waveParams.width} ${waveParams.height}`);
-  svg.setAttribute('width', waveParams.width);
-  svg.setAttribute('height', waveParams.height);
-  wavePath.setAttribute('fill', waveColor);
-});
+  const waveSvgs = document.querySelectorAll('.wave-svg');
+  waveSvgs.forEach(svg => {
+    const waveHeight = svg.dataset.waveheight;
+    const waveColor = svg.dataset.wavecolor;
+    const wavePath = svg.querySelector('.wave-path');
+    waveParams.waveHeight = waveHeight;
+    waveParams.waveColor = waveColor;
+    svg.setAttribute('viewBox', `0 0 ${waveParams.width} ${waveParams.height}`);
+    svg.setAttribute('width', waveParams.width);
+    svg.setAttribute('height', waveParams.height);
+    wavePath.setAttribute('fill', waveColor);
+  });
 
 // Update path attributes for all wavePaths
-const wavePaths = document.querySelectorAll('.wave-path');
-wavePaths.forEach(path => {
-  const waveHeight = path.closest('.wave-svg').dataset.waveheight;
-  path.setAttribute('d', `M 0,${waveParams.height} v -${waveHeight},0 q ${waveParams.waveWidth / 2},-${waveParams.waveAmplitude} ${waveParams.waveWidth},0 t ${waveParams.waveWidth},0 q ${waveParams.waveWidth / 2},-${waveParams.waveAmplitude} ${waveParams.waveWidth},0 v 0,${waveHeight} Z`);
-});
+  const wavePaths = document.querySelectorAll('.wave-path');
+  wavePaths.forEach(path => {
+    const waveHeight = path.closest('.wave-svg').dataset.waveheight;
+    path.setAttribute('d', `M 0,${waveParams.height} v -${waveHeight},0 q ${waveParams.waveWidth / 2},-${waveParams.waveAmplitude} ${waveParams.waveWidth},0 t ${waveParams.waveWidth},0 q ${waveParams.waveWidth / 2},-${waveParams.waveAmplitude} ${waveParams.waveWidth},0 v 0,${waveHeight} Z`);
+  });
 }
 
 // Call updateWave() whenever the window is resized
